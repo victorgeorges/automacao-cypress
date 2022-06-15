@@ -1,30 +1,20 @@
-# Boas práticas em automação de testes com Cypress
+# Testes automatizados com Cypress 
 
-👋 Seja bem vinda(o)!
 
-É muito bom tê-la(o) aqui. Tenho certeza que você vai adorar este curso. ❤️
+# Pré-requisitos
 
-## O que você vai aprender
+Antes de começar, garanta que os seguintes sistemas estejam instalados em seu computador.
 
-Durante o curso de boas práticas em automação de testes com Cypress você vai aprender 10 más práticas na na escrita de testes automatizados e como resolvê-las.
+- [git](https://git-scm.com/) (estou usando a versão `2.34.1`)
+- [Node.js](https://nodejs.org/en/) (estou usando a versão `v16.13.2` )
+- npm (estou usando a versão `8.3.2` e)
+- [Google Chrome](https://www.google.com/intl/pt_br/chrome/) (estou usando a versão `98.0.4758.80 (Official Build) (x86_64)` enquanto escrevo esta aula)
+- [Visual Studio Code](https://code.visualstudio.com/) (estou usando a versão `1.64.0` ) ou alguma outra IDE de sua preferência
 
-As más práticas em questão são as seguintes:
+# Execução em tempo real
+Execução npm run cy:open 
+ou 
+npm run cy:open:mobile
 
-- _Browser testing_
-- Duplicação de código
-- _Flaky tests_
-- _Hardcoded assertions_
-- Complexidade desnecessária
-- _Page Objects_
-- Dados sensíveis versionados
-- Testes desnecessariamente lentos
-- Esperas desnecessárias
-- Abstrações erradas
-
-## Vamos começar?
-
-Vá para a seção de [pré-requisitos](./lessons/0.md).
-
-___
-
-Um curso da [Escola Talking About Testing](https://udemy.com/user/walmyr).
+# Execução em modo headless
+npm test

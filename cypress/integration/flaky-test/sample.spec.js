@@ -1,11 +1,12 @@
 describe('Flaky tests bad practice', () => {
   beforeEach(() => {
+    //método convencional
+    //cy.intercept('GET','**/search**').as('getStories')
+  
+    //método interceptando o fixture (resposta do backend)
+    cy.intercept('GET', '**/search**', { fixture: 'stories' }).as('getStories')
     cy.visit('https://wlsf82-hacker-stories.web.app')
-
-    cy.contains('p','Loading ...')
-      .should('be.visible')
-    cy.contains('p','Loading ...')
-      .should('not.exist')
+    cy.wait('@getStories')
   })
 
   Cypress._.times(10, () => {
@@ -15,11 +16,7 @@ describe('Flaky tests bad practice', () => {
       Cypress._.times(6, () => {
         cy.search(faker.random.word())
       })
-
-      cy.contains('p','Loading ...')
-        .should('be.visible')
-      cy.contains('p','Loading ...')
-        .should('not.exist')
+      cy.wait('@getStories')
 
       cy.get('.last-searches button')
         .should('have.length', 5)

@@ -1,5 +1,6 @@
 describe('Code duplication bad practice - Sample 1', () => {
-  it('searches by typing and hitting enter', () => {
+
+  beforeEach(() => {
     cy.intercept(
       'GET',
       '**/search**'
@@ -9,31 +10,27 @@ describe('Code duplication bad practice - Sample 1', () => {
     cy.wait('@getStories')
 
     cy.get('input[type="text"]')
+      .as('searchField')
       .should('be.visible')
       .and('have.value', 'redux')
       .clear()
-      .type('frontend testing{enter}')
+  })
+
+  it('searches by typing and hitting enter', () => {
+    //aqui tu pegou a parte que é igual (o que está dentro do searchField)
+    //e apenas o diferente tu chama depois
+    cy.get('@searchField').type('frontend testing{enter}')
 
     cy.wait('@getStories')
 
     cy.get('.table-row')
       .should('have.length', 100)
   })
-
+  
   it('searches by typing and pressing the search button', () => {
-    cy.intercept(
-      'GET',
-      '**/search**'
-    ).as('getStories')
-
-    cy.visit('https://hackernews-seven.vercel.app')
-    cy.wait('@getStories')
-
-    cy.get('input[type="text"]')
-      .should('be.visible')
-      .and('have.value', 'redux')
-      .clear()
-      .type('frontend testing')
+    //aqui tu pegou a parte que é igual (o que está dentro do searchField)
+    //e apenas o diferente tu chama depois
+    cy.get('@searchField').type('frontend testing')      
 
     cy.contains('button', 'Search')
       .should('be.visible')

@@ -15,6 +15,8 @@ Antes de começar, garanta que os seguintes sistemas estejam instalados em seu c
 Execução npm run cy:open 
 ou 
 npm run cy:open:mobile
+ou
+npx cypress run --spec "caminho do spec"
 
 # Execução em modo headless
 npm test

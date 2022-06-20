@@ -4,7 +4,10 @@ describe('Sensitive data bad practice', () => {
   })
 
   it('fills the form with sensitive data', () => {
-    cy.get('#email').type('joe@example.com')
-    cy.get('#password').type('s3Cr€7-p@s5w0rd')
+    //dados sensíveis tu passa como variável de ambiente
+    //cy.get('#email').type('joe@example.com') -> e não assim
+    cy.get('#email').type(Cypress.env('user_email'))
+    //melhor maneira de não expor os dados nem na linha de comando nem no log
+    cy.get('#password').type(Cypress.env('user_password') , {log : false})
   })
 })
